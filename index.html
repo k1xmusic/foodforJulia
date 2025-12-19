@@ -1,147 +1,154 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Хуйня еда</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Еда, которую я не люблю</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+        background-color: #000;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+    }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background-color: #000; /* Чёрный фон */
-            color: #1f2937;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
+    .container {
+        display: flex;
+        align-items: center;
+        gap: 40px; /* расстояние между текстом и карточкой */
+        position: relative;
+    }
 
-        /* Текст на фоне */
-        body::before {
-            content: "Хуй тебе, а не дизайн";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            font-size: 80px;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.05);
-            white-space: nowrap;
-            pointer-events: none;
-            user-select: none;
-        }
+    .side-text {
+        font-size: 36px;
+        font-weight: 900;
+        color: rgba(255,255,255,0.2);
+        user-select: none;
+        pointer-events: none;
+        white-space: nowrap;
+    }
 
-        .card {
-            width: 100%;
-            max-width: 520px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 28px 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 0.8s ease-out;
-            position: relative; /* чтобы быть поверх фонового текста */
-        }
+    .side-left {
+        transform: rotate(-10deg);
+    }
 
-        h1 {
-            margin: 0 0 16px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
+    .side-right {
+        transform: rotate(10deg);
+    }
 
-        .subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 24px;
-        }
+    .card {
+        width: 100%;
+        max-width: 520px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 28px 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        animation: fadeIn 0.8s ease-out;
+        position: relative;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
+    h1 {
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 24px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    li {
+        padding: 14px 16px;
+        background: #f9fafb;
+        border-radius: 12px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    li::before {
+        content: "✕";
+        color: #ef4444;
+        font-weight: 600;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .container {
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
         }
-
-        li {
-            padding: 14px 16px;
-            background: #f9fafb;
-            border-radius: 12px;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .side-text {
+            font-size: 28px;
+            transform: rotate(0deg);
         }
-
-        li::before {
-            content: "✕";
-            color: #ef4444;
-            font-weight: 600;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
-            }
-            li {
-                font-size: 15px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
+
+<div class="container">
+    <div class="side-text side-left">Хуй тебе</div>
 
     <div class="card">
         <h1>Хуйня еда</h1>
         <div class="subtitle">Как тебе дизайн?</div>
 
         <ul>
-           <li>Брокколи</li>
+            <li>Брокколи</li>
             <li>Кукуруза</li>
             <li>Грибы</li>
             <li>Варёная капуста</li>
-            <li>Квашенная капуста</li>
+            <li>Квашеная капуста</li>
             <li>Холодец</li>
-            <li>Свинные уши</li>
+            <li>Свиные уши</li>
             <li>Горох</li>
             <li>Всё острое, абсолютно</li>
             <li>Список будет пополняться, как у меня будет время</li>
-            <!-- добавляй свои пункты -->
         </ul>
     </div>
+
+    <div class="side-text side-right">А не дизайн</div>
+</div>
 
 </body>
 </html>
