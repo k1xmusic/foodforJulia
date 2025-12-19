@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Без дизайна</title>
+    <title>Хуйня еда</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -14,28 +15,132 @@
 
         body {
             margin: 0;
-            height: 100vh;
-            background: #000000;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background-color: #000; /* Чёрный фон */
+            color: #1f2937;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .text {
-            color: #ffffff;
-            font-size: clamp(22px, 6vw, 48px);
-            font-weight: 600;
+        /* Текст на фоне */
+        body::before {
+            content: "Хуй тебе, а не дизайн";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-out;
+            position: relative; /* чтобы быть поверх фонового текста */
+        }
+
+        h1 {
+            margin: 0 0 16px;
             text-align: center;
-            line-height: 1.2;
-            padding: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        li {
+            padding: 14px 16px;
+            background: #f9fafb;
+            border-radius: 12px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        li::before {
+            content: "✕";
+            color: #ef4444;
+            font-weight: 600;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            li {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="text">
-        Хуй тебе, а не дизайн
+    <div class="card">
+        <h1>Хуйня еда</h1>
+        <div class="subtitle">Как тебе дизайн?</div>
+
+        <ul>
+           <li>Брокколи</li>
+            <li>Кукуруза</li>
+            <li>Грибы</li>
+            <li>Варёная капуста</li>
+            <li>Квашенная капуста</li>
+            <li>Холодец</li>
+            <li>Свинные уши</li>
+            <li>Горох</li>
+            <li>Всё острое, абсолютно</li>
+            <li>Список будет пополняться, как у меня будет время</li>
+            <!-- добавляй свои пункты -->
+        </ul>
     </div>
 
 </body>
